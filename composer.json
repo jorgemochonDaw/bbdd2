@@ -1,0 +1,16 @@
+{
+  "name": "jorge/bbdd2",
+  "description": "bbdd 2",
+  "authors": [
+    {
+      "name": "jorge mochon bernal",
+      "email": "bernalmochonjorge@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Ropa\\": "./clases"
+    }
+  }
+}
