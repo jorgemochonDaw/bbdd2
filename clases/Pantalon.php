@@ -3,11 +3,9 @@
 namespace Ropa;
 use ActiveRecord\Ropa;
 
-require_once './funciones/helpers.php';
-
-class Calzado extends Ropa
+class Pantalon extends Ropa
 {
-    protected static $tabla = 'calzado';
+    protected static $tabla = 'pantalon';
     protected static $columnasDB = ['id', 'talla', 'precio', 'marca', 'color'];
 
     public $id;
@@ -18,7 +16,7 @@ class Calzado extends Ropa
 
     public function __construct($tablas = [])
     {
-        $this->id = $tablas['id'] ?? '';
+        $this->id = $tablas['id'] ?? null;
         $this->talla = $tablas['talla'] ?? '';
         $this->precio = $tablas['precio'] ?? '';
         $this->marca = $tablas['marca'] ?? '';

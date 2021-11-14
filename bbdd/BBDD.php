@@ -7,9 +7,6 @@ function conectarDb(): mysqli
         echo "Error: No se pudo conectar a MySQL.";
         echo "errno de depuración: " . mysqli_connect_errno();
         exit;
-    } else {
-        echo 'succes';
-    }
-
+    } 
     return $db;
 }

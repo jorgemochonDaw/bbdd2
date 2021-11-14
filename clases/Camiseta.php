@@ -1,13 +1,12 @@
 <?php
 
 namespace Ropa;
+
 use ActiveRecord\Ropa;
 
-require_once './funciones/helpers.php';
-
-class Calzado extends Ropa
+class Camiseta extends Ropa
 {
-    protected static $tabla = 'calzado';
+    protected static $tabla = 'camiseta';
     protected static $columnasDB = ['id', 'talla', 'precio', 'marca', 'color'];
 
     public $id;

@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Ropa\\' => array($baseDir . '/clases'),
+    'ActiveRecord\\' => array($baseDir . '/clases'),
 );
