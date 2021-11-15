@@ -18,7 +18,6 @@ $db = conectarDb();
 
 use ActiveRecord\Ropa;
 use Ropa\Calzado;
-use Ropa\Pantalon;
 use Ropa\Camiseta;
 use Ropa\Llevar;
 use Ropa\Marca;
@@ -26,7 +25,7 @@ use Ropa\Persona;
 
 Ropa::connectBBDD($db);
 $calzados = Calzado::showAll();
-$pantalones = Pantalon::showAll();
+
 $camisetas = Camiseta::showAll();
 $estudio = Llevar::showAll();
 $marcas = Marca::showAll();
@@ -63,32 +62,7 @@ $personas = Persona::showAll();
                 </tbody>
             </table>
         </section>
-        <section>
-            <caption>Pantalones</caption>
-            <table class="table caption-top">
 
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Talla</th>
-                        <th>Precio</th>
-                        <th>Marca</th>
-                        <th>Color</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($pantalones as $pantalon) : ?>
-                        <tr>
-                            <td><?php echo $pantalon->id ?></td>
-                            <td><?php echo $pantalon->talla ?></td>
-                            <td><?php echo $pantalon->precio ?></td>
-                            <td><?php echo $pantalon->marca ?></td>
-                            <td><?php echo $pantalon->color ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table class="table table-dark">
-        </section>
         <section>
             <caption>Camisetas</caption>
             <table class="table caption-top">
@@ -183,8 +157,15 @@ $personas = Persona::showAll();
 
     <aside id="aside">
         <h2>Manipular datos de las tablas</h2>
+        <section>
+            <?php require './formularios/verTablas.php' ?>
+        </section>
         <section class="flex">
-            <?php require './formularios/insertarPantalon.php' ?>
+            <?php require './formularios/insertarPantalon.php';
+            if ($mostrarPantalon == 1) {
+                require './tablas/pantalones.php';
+            }
+            ?>
         </section>
     </aside>
 </body>

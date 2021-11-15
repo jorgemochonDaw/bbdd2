@@ -14,8 +14,10 @@
 <?php
 use Ropa\Pantalon;
 
+$mostrarPantalon = false;
 if (isset($_POST['insertarPantalon'])) {
     $pantalonNuevo = new Pantalon($_POST);
     $pantalonNuevo->guardar();
+    $mostrarPantalon = true;
 }
 ?>
