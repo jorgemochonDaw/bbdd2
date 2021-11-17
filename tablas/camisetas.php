@@ -1,9 +1,10 @@
 <?php
 
-use Ropa\Pantalon;
+use Ropa\Camiseta;
 
-$pantalones = Pantalon::showAll();
+$camisetas = Camiseta::showAll();
 ?>
+
 <style>
     .section-tabla {
         position: absolute;
@@ -12,9 +13,10 @@ $pantalones = Pantalon::showAll();
         top: 10%;
     }
 </style>
+
 <section class="section-tabla">
     <table class="table caption-top">
-        <caption class="mt-7">Pantalones</caption>
+        <caption>Camisetas</caption>
         <thead>
             <tr>
                 <th>Id</th>
@@ -25,13 +27,13 @@ $pantalones = Pantalon::showAll();
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($pantalones as $pantalon) : ?>
+            <?php foreach ($camisetas as $camiseta) : ?>
                 <tr>
-                    <td><?php echo $pantalon->id ?></td>
-                    <td><?php echo $pantalon->talla ?></td>
-                    <td><?php echo $pantalon->precio ?></td>
-                    <td><?php echo $pantalon->marca ?></td>
-                    <td><?php echo $pantalon->color ?></td>
+                    <td><?php echo $camiseta->id ?></td>
+                    <td><?php echo $camiseta->talla ?></td>
+                    <td><?php echo $camiseta->precio ?></td>
+                    <td><?php echo $camiseta->marca ?></td>
+                    <td><?php echo $camiseta->color ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

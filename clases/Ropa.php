@@ -40,21 +40,19 @@ class Ropa
         return $objeto;
     }
 
+    public static function findId($id)
+    {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE id = ${id}";
+        $resultado = self::consultarSql($query);
+        return $resultado;
+    }
+
     public static function showAll()
     {
         //Realizamos la consulta
         $query = "SELECT * FROM " . static::$tabla; //static hereda este metodo y busca este atributo en las clases hijas
         $resultado = self::consultarSql($query);
         return $resultado;
-    }
-
-    public function guardar()
-    {
-        if (!is_null(($this->id))) {
-            $this->actualizar();
-        } else {
-            $this->insertar();
-        }
     }
 
     public function insertar()
@@ -65,38 +63,49 @@ class Ropa
         $query .= " ) VALUES (' ";
         $query .= join("', '", array_values($atributos));
         $query .= " ') ";
+        echo $query;
         self::$db->query($query);
+
     }
 
     public function actualizar()
     {
         $atributos = $this->santitizarAtributos();
-        $valores=[];
-        foreach($atributos as $key => $value) {
+
+        $valores = [];
+        foreach ($atributos as $key => $value) {
             $valores[] = "{$key}='{$value}'";
         }
-
-        $query = "UPDATE " . static::$tabla . "SET";
+        $query = "UPDATE " . static::$tabla . " SET ";
         $query .= join(', ', $valores);
-        $query .= "WHERE id = '" . self::$db->escape_string($this->id) . "' ";
-        $query .= "LIMIT 1";
-        self::$db->query($query);
+        $query .= " WHERE id = '" . static::$db->escape_string($this->id) . "' ";
+        $query .= " LIMIT 1";
+        $resultado = self::$db->query($query);
+        var_dump($resultado);
+        return $resultado;
     }
 
-    public function eliminar() {
-        $query = "DELETE FROM " . static::$tabla . " WHERE id = " . self::$db->escape_string($this->id) . "
+    public static function eliminar($id)
+    {
+        $query = "DELETE FROM " . static::$tabla . " WHERE id = " . self::$db->escape_string($id) . "
         LIMIT 1 ";
         $query = self::$db->query($query);
-     }
+    }
+
+    public static function findByTallaCamiseta($talla)
+    {
+        $query = "SELECT * FROM camiseta " . " WHERE talla = ${talla}";
+        $resultado = self::consultarSql($query);
+        return $resultado;
+    }
 
     public function atributos()
     {
-
         $atributos = [];
         foreach (static::$columnasDB as $col) {
             if ($col == 'id') continue;
-                $atributos[$col] = $this->$col;
-            }
+            $atributos[$col] = $this->$col;
+        }
         return $atributos;
     }
 

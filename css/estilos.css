@@ -3,16 +3,9 @@ h1 {
     margin-bottom: 3rem;
 }
 
-.grid {
-    display: grid;
-    margin-left: 38%;
-    margin-right: 5rem;
-    margin-top: 1rem;
-}
-
 #aside {
     position: absolute;
     width: 30%;
-    left: 5%;
     top: 10%;
+    left: 10%;
 }

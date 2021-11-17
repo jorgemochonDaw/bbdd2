@@ -1,7 +1,7 @@
 <h3>Elige la tabla que quieras ver</h3>
-<form action="index.php" method="post" class="form-label">
-    <label for="tabla">Elige una tabla:</label>
-    <select name="tabla" multiple>
+<form action="index.php" method="POST" class="form-label">
+    <label for="tabla" class="form-label">Elige una tabla:</label>
+    <select class="form-control" name="tabla">
         <option value="calzado">Calzado</option>
         <option value="camiseta">Camiseta</option>
         <option value="llevar">Llevar</option>
@@ -13,11 +13,26 @@
 </form>
 
 <?php
-
-use Ropa\Pantalon;
-
-if (isset($_POST['modificarCalzado'])) {
-    $pantalonNuevo = new Pantalon($_POST);
-    $pantalonNuevo->guardar();
+if (isset($_POST['select'])) {
+    switch ($_POST['tabla']) {
+        case 'calzado':
+            return $isCalzado = true;
+            break;
+        case 'camiseta':
+            return $isCamiseta = true;
+            break;
+        case 'llevar':
+            return $isLlevar = true;
+            break;
+        case 'marca':
+            return $isMarca = true;
+            break;
+        case 'pantalon':
+            return $isPantalon = true;
+            break;
+        case 'persona':
+            return $isPersona = true;
+            break;
+    }
 }
 ?>
